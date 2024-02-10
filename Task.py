@@ -1,7 +1,7 @@
-from collections import UserDict
+from collections import UserDict   # Імпортуєм необхідну функцію модуля
 
 
-class Field:
+class Field:   # Створюємо клас поле
     def __init__(self, value):
         self.value = value
 
