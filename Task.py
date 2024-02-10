@@ -1,19 +1,19 @@
 from collections import UserDict   # Імпортуєм необхідну функцію модуля
 
 
-class Field:   # Створюємо клас поле
-    def __init__(self, value):
+class Field:   # Створюємо клас Field
+    def __init__(self, value):  #  Ініціація класу
         self.value = value
 
-    def __str__(self):
+    def __str__(self):  #  
         return str(self.value)
 
 
-class Name(Field):
+class Name(Field):  # Створюєм клас Name який наслідує клас  Field
     pass
 
 
-class Phone(Field):
+class Phone(Field):   # Створюєм клас Name який наслідує клас  Field
     def __init__(self, value):
         super().__init__(value)
         if not self.is_valid():
