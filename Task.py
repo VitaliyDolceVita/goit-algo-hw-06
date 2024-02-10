@@ -10,7 +10,8 @@ class Field:   # Створюємо клас Field
 
 
 class Name(Field):  # Створюєм клас Name який наслідує клас  Field
-    pass
+    def __init__(self, name):
+        self.name = name
 
 
 class Phone(Field):   # Створюєм клас Name який наслідує клас  Field
