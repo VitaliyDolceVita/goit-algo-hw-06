@@ -23,32 +23,31 @@ class Phone(Field):   # Створюєм клас Name який наслідує
     def is_valid(self):
         return len(self.value) == 10 and self.value.isdigit()
 
+class Record:  # Оголошення класу Record
+    def __init__(self, name):  # Оголошення конструктора класу з аргументом name
+        self.name = Name(name)  # Створення об'єкту класу Name з переданим ім'ям
+        self.phones = []  # Ініціалізація порожнього списку для зберігання телефонів
 
-class Record:
-    def __init__(self, name):
-        self.name = Name(name)
-        self.phones = []
+    def add_phone(self, phone):  # Оголошення методу для додавання телефону до запису
+        self.phones.append(Phone(phone))  # Додавання нового телефону до списку телефонів запису
 
-    def add_phone(self, phone):
-        self.phones.append(Phone(phone))
+    def remove_phone(self, phone):  # Оголошення методу для видалення телефону з запису
+        self.phones = [p for p in self.phones if p.value != phone]  # Видалення телефону зі списку телефонів запису, якщо він співпадає з переданим
 
-    def remove_phone(self, phone):
-        self.phones = [p for p in self.phones if p.value != phone]
+    def edit_phone(self, old_phone, new_phone):  # Оголошення методу для редагування телефону
+        for p in self.phones:  # Ітерація по всіх телефонах запису
+            if p.value == old_phone:  # Якщо знайдено телефон, який потрібно змінити
+                p.value = new_phone  # Заміна старого значення телефону на нове
+                break  # Виходимо з циклу після зміни
 
-    def edit_phone(self, old_phone, new_phone):
-        for p in self.phones:
-            if p.value == old_phone:
-                p.value = new_phone
-                break
+    def find_phone(self, phone):  # Оголошення методу для пошуку телефону в записі
+        for p in self.phones:  # Ітерація по всіх телефонах запису
+            if p.value == phone:  # Якщо знайдено шуканий телефон
+                return p  # Повертаємо його
+        return None  # Повертаємо None, якщо телефон не знайдено
 
-    def find_phone(self, phone):
-        for p in self.phones:
-            if p.value == phone:
-                return p
-        return None
-
-    def __str__(self):
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+    def __str__(self):  # Оголошення методу для конвертації об'єкту в рядок
+        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"  # Повертає рядок з ім'ям та списком телефонів запису
 
 
 
