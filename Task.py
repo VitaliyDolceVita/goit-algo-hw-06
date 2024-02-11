@@ -16,9 +16,9 @@ class Name(Field):  # Створюєм клас Name який наслідує �
 
 class Phone(Field):   # Створюєм клас Name який наслідує клас  Field
     def __init__(self, value):
-        super().__init__(value)
+        super().__init__(value)  # Виклик конструктора батьківського класу Field з передачею значення value
         if not self.is_valid():
-            raise ValueError("Invalid phone number format. Please provide a 10-digit phone number.")
+            raise ValueError("Invalid phone number format. Please provide a 10-digit phone number.")  # виклик винятку, якщо номер телефону некоректний
 
     def is_valid(self):
         return len(self.value) == 10 and self.value.isdigit()
