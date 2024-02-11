@@ -51,16 +51,18 @@ class Record:
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
 
 
-class AddressBook(UserDict):
-    def add_record(self, record):
-        self.data[record.name.value] = record
 
-    def find(self, name):
-        return self.data.get(name)
+class AddressBook(UserDict):  # Оголошення класу AddressBook, що успадковує клас UserDict
+    def add_record(self, record):  # Оголошення методу для додавання запису до адресної книги
+        self.data[record.name.value] = record  # Додавання запису до словника адресної книги, використовуючи ім'я як ключ
 
-    def delete(self, name):
-        if name in self.data:
-            del self.data[name]
+    def find(self, name):  # Оголошення методу для пошуку запису за ім'ям у адресній книзі
+        return self.data.get(name)  # Повернення запису за вказаним ім'ям, якщо він існує у книзі
+
+    def delete(self, name):  # Оголошення методу для видалення запису за ім'ям з адресної книги
+        if name in self.data:  # Перевірка, чи ім'я присутнє у книзі
+            del self.data[name]  # Видалення запису з книги, якщо воно присутнє
+
 
     def __str__(self):
         return "\n".join(str(record) for record in self.data.values())
