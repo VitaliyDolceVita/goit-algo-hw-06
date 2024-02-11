@@ -2,11 +2,11 @@ from collections import UserDict   # Імпортуєм необхідну фу�
 
 
 class Field:   # Створюємо клас Field
-    def __init__(self, value):  #  Ініціація класу
-        self.value = value
+    def __init__(self, value):  # Ініціація класу
+        self.value = value  # Присвоєння значення атрибуту value
 
-    def __str__(self):  #  
-        return str(self.value)
+    def __str__(self):  # Оголошення методу для конвертації об'єкта в рядок 
+        return str(self.value)  
 
 
 class Name(Field):  # Створюєм клас Name який наслідує клас  Field
@@ -15,7 +15,7 @@ class Name(Field):  # Створюєм клас Name який наслідує �
 
 
 class Phone(Field):   # Створюєм клас Name який наслідує клас  Field
-    def __init__(self, value):
+    def __init__(self, value):  # Оголошення конструктора класу з аргументом value
         super().__init__(value)  # Виклик конструктора батьківського класу Field з передачею значення value
         if not self.is_valid():
             raise ValueError("Invalid phone number format. Please provide a 10-digit phone number.")  # виклик винятку, якщо номер телефону некоректний
